@@ -20,7 +20,7 @@ window.addEventListener('load', () => {
         var li = document.createElement('li');
         ol.appendChild(li);
         // 1.5绑定li点击事件
-        li.addEventListener('click', () => {
+        li.addEventListener('click', function() {
             //排他
             for (var i = 0; i < ol.children.length; i++) {
                 ol.children[i].className = '';
