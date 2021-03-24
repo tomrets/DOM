@@ -19,6 +19,7 @@ window.addEventListener('load', () => {
     for (var i = 0; i < ul.children.length; i++) {
         var li = document.createElement('li');
         ol.appendChild(li);
+        li.setAttribute('index', i);
         // 1.5绑定li点击事件
         li.addEventListener('click', function() {
             //排他
@@ -26,6 +27,11 @@ window.addEventListener('load', () => {
                 ol.children[i].className = '';
             }
             this.className = 'current';
+            //1.6点击圆圈移动图片
+            //ul 的移动距离 就是小圆圈的索引号 注意是负值
+            var index = this.getAttribute('index');
+            var focusWidth = focus.clientWidth; //获得当前大小 这里等于图片
+            animate(ul, -index * focusWidth)
         })
     }
     //1.4 把ol第一个类型设置为li
