@@ -3,6 +3,7 @@ window.addEventListener('load', () => {
     var focus = document.querySelector('.focus');
     var leftArrow = document.querySelector('.arrow-l');
     var rightArrow = document.querySelector('.arrow-r');
+    var focusWidth = focus.clientWidth; //获得当前大小 这里等于图片
 
     // 1.2.鼠标经过 focus 显示隐藏左右按钮
     focus.addEventListener('mouseenter', () => {
@@ -30,7 +31,7 @@ window.addEventListener('load', () => {
             //1.6点击圆圈移动图片
             //ul 的移动距离 就是小圆圈的索引号 注意是负值
             var index = this.getAttribute('index');
-            var focusWidth = focus.clientWidth; //获得当前大小 这里等于图片
+            // var focusWidth = focus.clientWidth; //获得当前大小 这里等于图片
             animate(ul, -index * focusWidth)
         })
     }
@@ -42,9 +43,16 @@ window.addEventListener('load', () => {
     // 1.6点击右侧按钮，图片滚动
     var num = 0;
     rightArrow.addEventListener('click', function() {
-        var dis = focus.clientWidth;
+        if (num == ul.children.length - 1) {
+            num = 0;
+            ul.style.left = 0;
+            animate(ul, 0);
+
+        }
         num++;
-        animate(ul, -num * dis);
+        animate(ul, -num * focusWidth);
+
+
     })
 
 })
