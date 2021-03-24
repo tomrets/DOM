@@ -4,6 +4,7 @@ window.addEventListener('load', () => {
     var leftArrow = document.querySelector('.arrow-l');
     var rightArrow = document.querySelector('.arrow-r');
     var focusWidth = focus.clientWidth; //获得当前大小 这里等于图片
+    var circle = 0;
 
     // 1.2.鼠标经过 focus 显示隐藏左右按钮
     focus.addEventListener('mouseenter', () => {
@@ -24,6 +25,7 @@ window.addEventListener('load', () => {
         // 1.5绑定li点击事件
         li.addEventListener('click', function() {
             //排他
+            circle++;
             for (var i = 0; i < ol.children.length; i++) {
                 ol.children[i].className = '';
             }
@@ -53,8 +55,16 @@ window.addEventListener('load', () => {
         }
         num++;
         animate(ul, -num * focusWidth);
+        circle++;
+        if (circle == ol.children.length) {
+            circle = 0; //复原
+        }
+        for (var i = 0; i < ol.children.length; i++) {
+            ol.children[i].className = '';
+        }
 
-
+        ol.children[circle].className = 'current'
+            // 8.圆圈一起变化
     })
 
 })
