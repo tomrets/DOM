@@ -25,7 +25,6 @@ window.addEventListener('load', () => {
         // 1.5绑定li点击事件
         li.addEventListener('click', function() {
             //排他
-            circle++;
             for (var i = 0; i < ol.children.length; i++) {
                 ol.children[i].className = '';
             }
@@ -33,6 +32,8 @@ window.addEventListener('load', () => {
             //1.6点击圆圈移动图片
             //ul 的移动距离 就是小圆圈的索引号 注意是负值
             var index = this.getAttribute('index');
+            num = index;
+            circle = index;
             // var focusWidth = focus.clientWidth; //获得当前大小 这里等于图片
             animate(ul, -index * focusWidth)
         })
@@ -50,7 +51,7 @@ window.addEventListener('load', () => {
         if (num == ul.children.length - 1) {
             num = 0;
             ul.style.left = 0;
-            animate(ul, 0);
+            // animate(ul, 0);
 
         }
         num++;
@@ -59,12 +60,34 @@ window.addEventListener('load', () => {
         if (circle == ol.children.length) {
             circle = 0; //复原
         }
+
+        circle = circle < 0 ? ol.children.length : circle;
+        circleChange();
+    })
+
+    // 1.8左侧按钮，图片滚动
+    leftArrow.addEventListener('click', function() {
+        if (num == 0) {
+            num = ul.children.length - 1;
+            ul.style.left = -num * focusWidth + 'px';
+
+
+        }
+        num--;
+        animate(ul, num * focusWidth);
+        circle--;
+        if (circle < 0) {
+            circle = ol.children.length - 1; //复原
+        }
+        circleChange();
+    })
+
+    function circleChange() {
         for (var i = 0; i < ol.children.length; i++) {
             ol.children[i].className = '';
         }
 
         ol.children[circle].className = 'current'
             // 8.圆圈一起变化
-    })
-
+    }
 })
