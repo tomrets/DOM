@@ -39,7 +39,9 @@ window.addEventListener('load', () => {
     // ol.children[0].setAttribute('class', 'current');
     ol.children[0].className = 'current';
 
-
+    // 7.克隆图片到ul最后面
+    var first = ul.children[0].cloneNode(true);
+    ul.appendChild(first);
     // 1.6点击右侧按钮，图片滚动
     var num = 0;
     rightArrow.addEventListener('click', function() {
