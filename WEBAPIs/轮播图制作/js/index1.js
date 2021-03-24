@@ -10,10 +10,15 @@ window.addEventListener('load', () => {
     focus.addEventListener('mouseenter', () => {
         leftArrow.style.display = 'block'
         rightArrow.style.display = 'block'
+        clearInterval(timer);
+        timer = null;
     })
     focus.addEventListener('mouseleave', () => {
             leftArrow.style.display = 'none'
             rightArrow.style.display = 'none'
+            timer = setInterval(function() {
+                rightArrow.click();
+            }, 2000)
         })
         //1.3动态生成小圆圈
     var ul = focus.querySelector('ul');
@@ -90,4 +95,8 @@ window.addEventListener('load', () => {
         ol.children[circle].className = 'current'
             // 8.圆圈一起变化
     }
+    //10.自动播放
+    var timer = setInterval(function() {
+        rightArrow.click();
+    }, 2000)
 })
