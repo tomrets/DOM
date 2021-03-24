@@ -21,10 +21,11 @@ window.addEventListener('load', () => {
         ol.appendChild(li);
         // 1.5绑定li点击事件
         li.addEventListener('click', () => {
-            for (var i = 0; i < ul.children.length; i++) {
+            //排他
+            for (var i = 0; i < ol.children.length; i++) {
                 ol.children[i].className = '';
             }
-            li.className = 'current';
+            this.className = 'current';
         })
     }
     //1.4 把ol第一个类型设置为li
