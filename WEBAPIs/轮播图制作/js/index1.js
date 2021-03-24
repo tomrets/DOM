@@ -52,22 +52,30 @@ window.addEventListener('load', () => {
     ul.appendChild(first);
     // 1.6点击右侧按钮，图片滚动
     var num = 0;
+    var circle = 0;
+    // flag节流阀
+    var flag = true;
     rightArrow.addEventListener('click', function() {
-        if (num == ul.children.length - 1) {
-            num = 0;
-            ul.style.left = 0;
-            // animate(ul, 0);
+        flag = false;
+        if (flag) {
+            if (num == ul.children.length - 1) {
+                num = 0;
+                ul.style.left = 0;
+                // animate(ul, 0);
 
-        }
-        num++;
-        animate(ul, -num * focusWidth);
-        circle++;
-        if (circle == ol.children.length) {
-            circle = 0; //复原
-        }
+            }
+            num++;
+            animate(ul, -num * focusWidth, function() {
+                flag = true;
+            });
+            circle++;
+            if (circle == ol.children.length) {
+                circle = 0; //复原
+            }
 
-        circle = circle < 0 ? ol.children.length : circle;
-        circleChange();
+            circle = circle < 0 ? ol.children.length : circle;
+            circleChange();
+        }
     })
 
     // 1.8左侧按钮，图片滚动
@@ -75,8 +83,6 @@ window.addEventListener('load', () => {
         if (num == 0) {
             num = ul.children.length - 1;
             ul.style.left = -num * focusWidth + 'px';
-
-
         }
         num--;
         animate(ul, num * focusWidth);
