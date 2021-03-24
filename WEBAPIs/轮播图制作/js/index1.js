@@ -38,4 +38,13 @@ window.addEventListener('load', () => {
     // ol.children[0].setAttribute('class', 'current');
     ol.children[0].className = 'current';
 
+
+    // 1.6点击右侧按钮，图片滚动
+    var num = 0;
+    rightArrow.addEventListener('click', function() {
+        var dis = focus.clientWidth;
+        num++;
+        animate(ul, -num * dis);
+    })
+
 })
