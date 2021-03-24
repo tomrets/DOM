@@ -14,10 +14,14 @@ window.addEventListener('load', () => {
             rightArrow.style.display = 'none'
         })
         //1.3动态生成小圆圈
-    var lis = focus.querySelector('ul').querySelectorAll('li');
-    var ol = focus.querySelector('ol')
-    for (var i = 0; i < lis.length; i++) {
+    var ul = focus.querySelector('ul');
+    var ol = focus.querySelector('.circle')
+    for (var i = 0; i < ul.children.length; i++) {
         var li = document.createElement('li');
         ol.appendChild(li);
     }
+    //1.4 把ol第一个类型设置为li
+    // ol.children[0].setAttribute('class', 'current');
+    ol.children[0].className = 'current';
+
 })
