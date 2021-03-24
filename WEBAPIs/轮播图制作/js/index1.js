@@ -19,6 +19,13 @@ window.addEventListener('load', () => {
     for (var i = 0; i < ul.children.length; i++) {
         var li = document.createElement('li');
         ol.appendChild(li);
+        // 1.5绑定li点击事件
+        li.addEventListener('click', () => {
+            for (var i = 0; i < ul.children.length; i++) {
+                ol.children[i].className = '';
+            }
+            li.className = 'current';
+        })
     }
     //1.4 把ol第一个类型设置为li
     // ol.children[0].setAttribute('class', 'current');
