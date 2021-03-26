@@ -21,11 +21,10 @@ $(function() {
     $('.decrement').click(function() {
         var n = $(this).siblings('.itxt').val();
 
-        if (n <= 1) {
-            n = 1;
-        } else {
-            n--;
+        if (n == 1) {
+            return false;
         }
+        n--;
         var n = $(this).siblings('.itxt').val(n);
     })
 })
