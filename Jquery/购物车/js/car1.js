@@ -3,6 +3,12 @@ $(function() {
     $('.checkall').change(function() {
         var status = $(this).prop('checked');
         $('.j-checkbox ,.checkall').prop('checked', status);
+        if ($(this).prop('checked')) {
+            //所有商品添加 check-cart-item 类名
+            $('.cart-item').addClass('check-cart-item')
+        } else {
+            $('.cart-item').removeClass('check-cart-item') //移除check-cart-item
+        }
 
     })
     $('.j-checkbox').change(function() {
@@ -10,6 +16,12 @@ $(function() {
             $('.checkall').prop('checked', true);
         } else {
             $('.checkall').prop('checked', false);
+        }
+        if ($(this).prop('checked')) {
+            //让当前的商品添加 check-cart-item 类名
+            $(this).parents('.cart-item').addClass('check-cart-item')
+        } else {
+            $(this).parents('.cart-item').removeClass('check-cart-item') //移除check-cart-item
         }
     })
 
