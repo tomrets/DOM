@@ -12,5 +12,20 @@ $(function() {
         }
     })
 
+    //模块2 增加商品数量
+    $('.increment').click(function() {
+        var n = $(this).siblings('.itxt').val();
+        n++;
+        var n = $(this).siblings('.itxt').val(n);
+    })
+    $('.decrement').click(function() {
+        var n = $(this).siblings('.itxt').val();
 
+        if (n <= 1) {
+            n = 1;
+        } else {
+            n--;
+        }
+        var n = $(this).siblings('.itxt').val(n);
+    })
 })
