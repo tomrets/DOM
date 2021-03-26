@@ -16,7 +16,13 @@ $(function() {
     $('.increment').click(function() {
         var n = $(this).siblings('.itxt').val();
         n++;
-        var n = $(this).siblings('.itxt').val(n);
+        $(this).siblings('.itxt').val(n);
+        //模块三小计模块
+        var p = $(this).parent().parent().siblings('.p-price').html();
+        var p = p.substr(1);
+        console.log(n);
+        //小计模块
+        $(this).parent().parent().siblings('.p-sum').html('$' + p * n);
     })
     $('.decrement').click(function() {
         var n = $(this).siblings('.itxt').val();
@@ -25,6 +31,13 @@ $(function() {
             return false;
         }
         n--;
-        var n = $(this).siblings('.itxt').val(n);
+        $(this).siblings('.itxt').val(n);
+
+        var p = $(this).parent().parent().siblings('.p-price').html();
+        var p = p.substr(1);
+        console.log(n);
+        //小计模块
+        $(this).parent().parent().siblings('.p-sum').html('$' + p * n);
     })
+
 })
