@@ -71,17 +71,35 @@ $(function() {
         var count = 0; //计算总件数
         var money = 0; //计算总金额
         $('.itxt').each(function(i, ele) {
-            count += parseInt($(ele).val());
-            $('.amount-sum em').text(count);
-        })
-        console.log('sum', $('.p-sum'));
+                count += parseInt($(ele).val());
+                $('.amount-sum em').text(count);
+            })
+            // console.log('sum', $('.p-sum'));
         $('.p-sum').each(function(i, ele) {
-            console.log('this', $(ele));
+            // console.log('this', $(ele));
 
             money += parseFloat($(ele).text().substr(1));
             $('.price-sum em').text('$' + money);
-            console.log(money);
+            // console.log(money);
         })
     }
+    //6.删除当前商品
+    //删除按钮
+    $('.p-action a').click(function() {
+        $(this).parents('.cart-item').remove();
+    })
+    getSum();
+    //复选框删除
 
+    $('.remove-batch').click(function() {
+        // console.log($('.j-checkbox:checked').parents('.cart-item'));
+        $('.j-checkbox:checked').parents('.cart-item').remove();
+        getSum();
+
+    })
+    $('.clear-all').click(function() {
+        $('.cart-item').remove();
+        getSum();
+
+    })
 })
